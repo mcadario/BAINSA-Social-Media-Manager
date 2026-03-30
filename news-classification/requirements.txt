@@ -1,0 +1,9 @@
+newspaper3k==0.2.8
+numpy==2.4.4
+Requests==2.33.0
+scikit_learn==1.8.0
+torch==2.8.0
+transformers==4.49.0
+nltk
+dotenv
+lxml_html_clean
