@@ -1,5 +1,5 @@
-from lib.pipeline import pipe 
-from lib import news
+from imports.pipeline import pipe 
+from imports import news
 import os
 import json
 
