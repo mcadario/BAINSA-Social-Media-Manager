@@ -30,5 +30,4 @@ mkdir -p output
 echo ""
 echo "=== Setup complete! ==="
 echo "1. Edit .env and add your NEWSDATA_API_KEY"
-echo "2. Place your trained model in weights/clf.pkl"
 echo "3. Run: python top_n_news.py"

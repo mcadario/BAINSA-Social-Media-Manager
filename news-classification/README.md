@@ -6,20 +6,14 @@
 
 1. Create and activate environment:
 ```bash
-mamba create -n newsdata python=3.11
+mamba create -n newsdata python=3.11 pip
 mamba activate newsdata
 ```
 
-2. Install dependencies:
-```bash
-pip install -r requirements.txt
+2. Run setup routine:
+``` bash
+bash setup.sh
 ```
-
-3. Set up API keys: create a `.env` file and paste
-```
-    NEWSDATA_API_KEY = 'your_api_key_here'
-```
-
 ## Usage
 ```bash
 python top_n_news.py
