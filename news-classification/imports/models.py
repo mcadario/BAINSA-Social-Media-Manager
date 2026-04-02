@@ -3,8 +3,9 @@ import torch
 from sklearn.linear_model import LogisticRegression
 from sklearn.model_selection import StratifiedKFold, cross_val_score
 import numpy as np
+from huggingface_hub import hf_hub_download
+import pickle
 
-PKL_PATH = "weights/clf.pkl"
 BERT_EMB_PATH = "datasets/bert_embeddings.npy"
 LABELS_PATH = "datasets/labels.npy"
 DF_PATH = "datasets/df_news_labeled.csv"
@@ -13,8 +14,12 @@ LBLD_JSON_PATH = "datasets/labeled_merged.json"
 
 tokenizer = RobertaTokenizer.from_pretrained("roberta-base")
 BERTmodel = RobertaModel.from_pretrained("roberta-base", add_pooling_layer=False)
-clf = LogisticRegression(class_weight='balanced', max_iter=1000, random_state=42)
 cv = StratifiedKFold(n_splits=5, shuffle=True, random_state=42)
+
+clf_path = hf_hub_download(repo_id="mcadario/clf_news-classification_LinearRegressor", filename="clf.pkl")
+
+with open(clf_path, "rb") as f:
+    clf = pickle.load(f)
 
 def get_embedding_single(text):
     inputs = tokenizer(text, return_tensors="pt", truncation=True, max_length=512)

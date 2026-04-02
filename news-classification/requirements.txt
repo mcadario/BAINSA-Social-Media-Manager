@@ -10,3 +10,5 @@ transformers>=4.45.0
 
 nltk
 python-dotenv
+
+huggingface_hub
