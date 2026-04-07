@@ -58,9 +58,12 @@ def get_news_clean(keywords, exclude, limit=5, start_page=None) -> tuple:
         for article in data['results']:
             if fetched >= limit:
                 break
+
+            #assertion to check data type
+            assert isinstance(article, dict), f"Expected dict, got {type(article)}"
             
-            link = article.get("link")
-            title = article.get("title")
+            link = article['link']
+            title = article['title']
             
             if link in seen_links:
                 continue

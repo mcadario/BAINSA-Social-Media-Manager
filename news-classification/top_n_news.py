@@ -8,7 +8,10 @@ KEYWORDS = "ai, artificial intelligence, machine learning, ai agents"
 EXCLUDE_CAT = "business"
 LIMIT = 50 # news to download
 TOP_N = 5
-OUTPUT_PATH = "output/top_articles.md"; os.makedirs("output", exist_ok=True)
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+OUTPUT_DIR = os.path.join(BASE_DIR, "output")
+OUTPUT_PATH = os.path.join(OUTPUT_DIR, "top_articles.md")
 
 art, links, titles = news.get_news_clean(keywords=KEYWORDS, exclude=EXCLUDE_CAT, limit=LIMIT)
 print("executed API and scraped")
@@ -19,7 +22,6 @@ keys = list(art.keys())
 
 print("Classifying...")
 probas = pipe.predict_proba(art)
-
 
 #map interest to keys
 print("Mapping back to keys")

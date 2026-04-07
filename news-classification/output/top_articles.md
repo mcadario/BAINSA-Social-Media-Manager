@@ -2,71 +2,71 @@
 
 ## Topic 1
 
-Headline: Advancing to the next frontier of AI
+Headline: Anaxi, Carnegie Mellon study AI data value, revenue models
 
-Summary: This will allow agents to manipulate spreadsheets and documents to extract information programmatically, he explained during a wide-ranging conversation with Nvidia chief scientist Bill Dally on advancing the next frontier of AI.
-Autonomous R&D For Google, advancing to AI’s next frontier means empowering models to act as autonomous R&D laboratories.
-Dally pressed Dean on how close the industry is to an AI model that can experiment, curate data and train the next version of itself.
-‘Speed of light’ inference With inference expected to account for most AI workloads, Nvidia is aggressively targeting communication latency to give AI agents the ability to “think” without pausing.
-‘Don’t move the data’ As AI consumes vast amounts of energy, Dally offered a blunt solution for reducing energy consumption: “Don’t move the data.
+Summary: While that change may make services easier to use, it also challenges the advertising model that has supported much of the internet economy.
+"Agents call other agents, models rely on curated datasets, and each output is increasingly the result of many contributors' work.
+"Modern AI systems rely on enormous volumes of training data, but the value of that data is rarely clear," said Xiong.
+The new partnership aims to build on that work by extending the analysis to broader AI systems and agent-driven environments.
+It argues that these components will become reusable building blocks within larger AI systems, creating a need for clearer rules on pricing and compensation.
 
-Source: https://www.computerweekly.com/news/366640859/Advancing-to-the-next-frontier-of-AI
+Source: https://itbrief.asia/story/anaxi-carnegie-mellon-study-ai-data-value-revenue-models
 
 ---
 
 ## Topic 2
 
-Headline: The real US surveillance threat isn’t AI — it’s the data infrastructure we already built
+Headline: Treating AI Agents as Junior Engineers: Oversight for Productivity and Safety
 
-Summary: The most dangerous surveillance systems aren’t the ones that require new technology — they’re the ones that quietly stitch together technology we already accepted years ago.
-Commercially available location data harvested from mobile apps.
-If Congress passed a comprehensive ban on AI use in federal surveillance tomorrow, how much would the FBI’s actual surveillance capacity diminish?
-The commercial data brokers would still sell location data.
-Watch for court challenges testing whether state privacy statutes can restrict federal data purchases.
+Summary: A report from TechRadar explores this idea in depth, arguing that treating AI agents as junior engineers ensures safer and more effective use.
+AI agents can produce inconsistent results due to the probabilistic nature of machine learning models.
+In cybersecurity, AI agents might monitor networks for threats, but trusting them fully could be risky.
+Ultimately, viewing AI agents as junior engineers encourages a pragmatic path forward.
+By treating AI agents as capable but inexperienced contributors, we create a foundation for sustainable innovation in engineering and beyond.
 
-Source: https://siliconcanals.com/sc-a-the-real-us-surveillance-threat-isnt-ai-its-the-data-infrastructure-we-already-built/
+Source: https://www.webpronews.com/treating-ai-agents-as-junior-engineers-oversight-for-productivity-and-safety/
 
 ---
 
 ## Topic 3
 
-Headline: Meta CEO Accelerates 'AI-Native' Shift, Engineering Teams Set 75% AI Coding Targets Amid Workforce Reductions
+Headline: Camilo Brown-Pinilla's senior project: A new approach to AI translation
 
-Summary: Mumbai, March 29: Meta is aggressively transitioning into an "AI-native" organisation by mandating strict artificial intelligence adoption targets for its engineering staff.
-Tech Layoffs 2026: Meta, Amazon, and Epic Games Slash Workforce Amid Strategic Industry Realignments.
-Redefining Engineering Roles and "AI Pods"To facilitate this transition, Meta has begun a significant organisational overhaul, particularly within its Reality Labs division.
-Despite the workforce reductions, Meta is heavily investing in top-tier AI talent and infrastructure.
-Meta Employees in Wearables and Ads Divisions Told To Work Remotely, HR Sends Email As Layoffs Loom.
+Summary: For his senior project spotlight, applied math concentrator Camilo Brown-Pinilla proposed a new approach to AI translation algorithmsFourth-year applied mathematics concentrators at the Harvard John A. Paulson School of Engineering and Applied Sciences (SEAS) have the option to write senior theses.
+This thesis approaches Natural Language Processing, which allows artificial intelligence agents to understand human languages, from this geometric perspective, treating translation as a symmetry of language and asking whether this approach can be used to improve the translation ability of AI systems.
+I have been thinking about this project ever since my junior year when I took a class on Geometric Machine Learning.
+Starting with a background in Natural Language Processing, I was amazed by the mathematical elegance and real-world utility of the geometric learning philosophy.
+The hardest part of the project was refining my initial interest in a bridge between Geometric Deep Learning and Natural Language Processing into an actionable research question.
 
-Source: https://www.latestly.com/technology/meta-ceo-accelerates-ai-native-shift-engineering-teams-set-75-ai-coding-targets-amid-workforce-reductions-7371631.html
+Source: https://seas.harvard.edu/news/camilo-brown-pinillas-senior-project-new-approach-ai-translation
 
 ---
 
 ## Topic 4
 
-Headline: AI with AWS Online Course: AWS AI Online Training By Visualpath
+Headline: AI in higher education poses a deeper threat than cheating, researchers argue
 
-Summary: Amazon SageMaker for Custom ModelsIf you need to build a model from scratch, Amazon SageMaker is the tool.
-If you prefer learning from home, you can find an AWS AI Course Online.
-For those looking for structured help, AWS AI Online Training offers live sessions with experts.
-If you are located in India, you might look for AWS AI Online Training in Hyderabad to find local experts at Visualpath.
-Visualpath explains AWS AI services, core tools, real examples, and learning paths in simple terms for beginners and professionals in cloud AI.
+Summary: The Real Threat From AI in Higher Education Isn't CheatingUniversities are adopting artificial intelligence across admissions, scheduling, resource allocation and research.
+Their conclusion: as machines become better at knowledge work, universities face a choice about what they actually are.
+Three levels of AI riskNot all AI systems pose the same threat.
+As knowledge work itself becomes automated, institutions must decide what higher education owes students, early-career scholars and society.
+Educators working through these questions may find value in exploring AI for Education and AI Research Courses to understand both the tools and their implications.
 
-Source: https://feedingtrends.com/ai-with-aws-online-course-aws-ai-online-training-by-visualpath
+Source: https://completeaitraining.com/news/ai-in-higher-education-poses-a-deeper-threat-than-cheating/
 
 ---
 
 ## Topic 5
 
-Headline: No tuition, no grades, no power grid: why are people flocking to a ‘college’ in the middle of the desert?
+Headline: Sam Altman May Control Our Future—Can He Be Trusted?
 
-Summary: The desolate community’s name: Mars College.
-View image in fullscreen Amy Brown Carver, a writer who leads the writers’ workshop at Mars College.
-The vacant land eventually became the new “campus” for Mars College.
-View image in fullscreen Art on the wall of the communal kitchen at Mars College.
-In their creative work, Mars students deliberate over the best way to incorporate artificial intelligence, if at all.
+Summary: We met Altman in a generic-looking conference room on the eighth floor.
+“People used to tell me about decision fatigue, and I didn’t get it,” Altman told us.
+His mother, Connie Gibstine, is a dermatologist; his father, Jerry Altman, was a real-estate broker and a housing activist.
+The summer after his sophomore year, Altman went to Massachusetts to join the inaugural batch of entrepreneurs at Y Combinator, a “startup incubator” co-founded by the renowned software engineer Paul Graham.
+One recalled Altman bragging widely that he was a champion Ping-Pong player—“like, Missouri high-school Ping-Pong champ”—and then proving to be one of the worst players in the office.
 
-Source: https://www.theguardian.com/us-news/2026/mar/29/mars-college-california-campus
+Source: https://www.newyorker.com/magazine/2026/04/13/sam-altman-may-control-our-future-can-he-be-trusted
 
 ---
 
