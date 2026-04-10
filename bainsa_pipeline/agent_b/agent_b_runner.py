@@ -14,7 +14,7 @@ PROJECT_DIR = BASE_DIR.parent.parent
 BRAND_MEMORY_PATH = PROJECT_DIR / "bainsa_pipeline" / "step1" / "brand_memory_final.md"
 RESEARCH_INPUT_PATH = PROJECT_DIR / "bainsa_pipeline" / "agent_a" / "output" / "top_articles.md"
 PROMPT_PATH = BASE_DIR / "agent_b_prompt.md"
-ENV_PATH = BASE_DIR / ".env"
+ENV_PATH = PROJECT_DIR / ".env"
 
 OUTPUT_DIR = BASE_DIR / "outputs"
 OUTPUT_DIR.mkdir(exist_ok=True)

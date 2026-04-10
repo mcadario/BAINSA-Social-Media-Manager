@@ -4,6 +4,8 @@ import time
 from newspaper import Article, Config
 from dotenv import load_dotenv
 import nltk
+from pathlib import Path
+
 
 try:
     nltk.data.find('tokenizers/punkt_tab')
@@ -12,7 +14,13 @@ except LookupError:
 
 import os
 
-load_dotenv()
+
+BASE_DIR = Path(__file__).resolve().parent
+PROJECT_DIR = BASE_DIR.parent.parent.parent
+
+ENV_PATH = PROJECT_DIR / ".env"
+
+load_dotenv(dotenv_path=ENV_PATH)
 
 NEWSDATA_API_KEY = os.getenv("NEWSDATA_API_KEY")
 
