@@ -40,10 +40,9 @@ Each slide must include:
 ## Writing rules
 - hook must be short, clear, and informative
 - body must be concise and educational
-- cta should be minimal and direct
-- cta text cannot contain arrows or symbols
-- use "Swipe for details" at the bottom
-- include a small right-pointing arrow on the right
+- cta must be exactly: "Swipe for details"
+- do not put arrows or symbols inside the cta text
+- the right-pointing arrow belongs only in visual_direction
 - avoid words like "insane", "crazy", and similar hype language
 - do not overload slides with text
 - use `source_topic_headline` exactly as it appears in the research input

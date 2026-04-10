@@ -13,8 +13,11 @@ Fetch and rank daily AI news into a research handoff.
 Use the research handoff and brand memory to generate brand-compliant Instagram Story copy automatically.
 
 ## Agent B
+
 - reads `bainsa_pipeline/step1/brand_memory_final.md`
 - reads `bainsa_pipeline/agent_a/output/top_articles.md`
+- reads `step1/brand_memory_final.md`
+- reads `agent_a/output/top_articles.md`
 - generates Instagram Story JSON
 - saves outputs to `bainsa_pipeline/agent_b/outputs/`
 - validates the latest output automatically

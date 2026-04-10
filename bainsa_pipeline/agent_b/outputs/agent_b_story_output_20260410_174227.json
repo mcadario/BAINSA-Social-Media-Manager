@@ -1,0 +1,20 @@
+{
+  "slides": [
+    {
+      "slide_number": 1,
+      "hook": "AI Agents: Junior Engineers?",
+      "body": "A new report suggests treating AI agents as junior engineers. This approach ensures safer and more effective use, mitigating risks from inconsistent results and probabilistic models in critical applications like cybersecurity.",
+      "cta": "Swipe for details",
+      "visual_direction": "Minimalistic layout. Black background, white text. Left-aligned. A subtle blue (#2740eb) corner element. Right-pointing arrow.",
+      "source_topic_headline": "Treating AI Agents as Junior Engineers: Oversight for Productivity and Safety"
+    },
+    {
+      "slide_number": 2,
+      "hook": "AI's Deeper Impact on Higher Ed",
+      "body": "Beyond cheating, AI challenges universities to redefine their core purpose. As knowledge work automates, institutions must decide what higher education owes students and society.",
+      "cta": "Swipe for details",
+      "visual_direction": "Minimalistic layout. White background, black text. Justified alignment. A subtle orange (#fe6203) corner element. Right-pointing arrow.",
+      "source_topic_headline": "AI in higher education poses a deeper threat than cheating, researchers argue"
+    }
+  ]
+}

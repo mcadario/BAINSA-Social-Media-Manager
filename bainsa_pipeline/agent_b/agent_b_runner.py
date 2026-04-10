@@ -9,10 +9,10 @@ from getpass import getpass
 import requests
 
 BASE_DIR = Path(__file__).resolve().parent
-PROJECT_DIR = BASE_DIR.parent
+PROJECT_DIR = BASE_DIR.parent.parent
 
-BRAND_MEMORY_PATH = PROJECT_DIR / "step1" / "brand_memory_final.md"
-RESEARCH_INPUT_PATH = PROJECT_DIR / "agent_a" / "output" / "top_articles.md"
+BRAND_MEMORY_PATH = PROJECT_DIR / "bainsa_pipeline" / "step1" / "brand_memory_final.md"
+RESEARCH_INPUT_PATH = PROJECT_DIR / "bainsa_pipeline" / "agent_a" / "output" / "top_articles.md"
 PROMPT_PATH = BASE_DIR / "agent_b_prompt.md"
 ENV_PATH = BASE_DIR / ".env"
 

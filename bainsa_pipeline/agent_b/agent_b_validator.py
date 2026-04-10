@@ -3,10 +3,10 @@ import json
 import re
 
 BASE_DIR = Path(__file__).resolve().parent
-PROJECT_DIR = BASE_DIR.parent
+PROJECT_DIR = BASE_DIR.parent.parent
 
 OUTPUTS_DIR = BASE_DIR / "outputs"
-RESEARCH_INPUT_PATH = PROJECT_DIR / "agent_a" / "output" / "top_articles.md"
+RESEARCH_INPUT_PATH = PROJECT_DIR / "bainsa_pipeline" / "agent_a" / "output" / "top_articles.md"
 
 def get_latest_story_output_path() -> Path:
     files = sorted(OUTPUTS_DIR.glob("agent_b_story_output_*.json"))
