@@ -1,0 +1,20 @@
+{
+  "slides": [
+    {
+      "slide_number": 1,
+      "hook": "Understanding AI Data Value",
+      "body": "A Carnegie Mellon and Anaxi study explores the complex economics of AI training data. As AI systems grow, defining data value and revenue models becomes crucial for fair compensation and sustainable innovation.",
+      "cta": "Swipe for details",
+      "visual_direction": "Minimalistic layout. Black/white base with blue accent. Left-aligned text. Alliance No.2 semi-bold for hook, Alliance No.1 regular for body. Small right-pointing arrow.",
+      "source_topic_headline": "Anaxi, Carnegie Mellon study AI data value, revenue models"
+    },
+    {
+      "slide_number": 2,
+      "hook": "AI Agents: Junior Engineers?",
+      "body": "Treating AI agents as junior engineers ensures safer and more effective use. This approach acknowledges their capabilities while emphasizing the need for human oversight due to probabilistic outputs and potential risks.",
+      "cta": "Swipe for details",
+      "visual_direction": "Minimalistic layout. Black/white base with orange accent. Left-aligned text. Alliance No.2 semi-bold for hook, Alliance No.1 regular for body. Small right-pointing arrow.",
+      "source_topic_headline": "Treating AI Agents as Junior Engineers: Oversight for Productivity and Safety"
+    }
+  ]
+}

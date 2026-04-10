@@ -1,0 +1,20 @@
+{
+  "slides": [
+    {
+      "slide_number": 1,
+      "hook": "Valuing AI Data: A New Economic Model",
+      "body": "Modern AI systems rely on vast training data, yet its value is often unclear. A Carnegie Mellon and Anaxi study explores new revenue models for reusable AI components and agent-driven environments, challenging traditional advertising models.",
+      "cta": "Swipe for details",
+      "visual_direction": "Minimalistic layout. Black/white base with blue accent. Left-aligned text. Geometric shapes representing data flow.",
+      "source_topic_headline": "Anaxi, Carnegie Mellon study AI data value, revenue models"
+    },
+    {
+      "slide_number": 2,
+      "hook": "AI Agents: Junior Engineers for Safety",
+      "body": "Treating AI agents as junior engineers ensures safer, more effective use. Due to probabilistic nature, AI agents can produce inconsistent results. Oversight is crucial for productivity and mitigating risks, especially in critical areas like cybersecurity.",
+      "cta": "Swipe for details",
+      "visual_direction": "Retro-futuristic aesthetic. Black/white base with orange accent. Justified text. Abstract representation of human-AI collaboration.",
+      "source_topic_headline": "Treating AI Agents as Junior Engineers: Oversight for Productivity and Safety"
+    }
+  ]
+}

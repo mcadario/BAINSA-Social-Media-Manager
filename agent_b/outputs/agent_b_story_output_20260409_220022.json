@@ -1,0 +1,20 @@
+{
+  "slides": [
+    {
+      "slide_number": 1,
+      "hook": "AI data value and revenue models are under scrutiny.",
+      "body": "A new study by Anaxi and Carnegie Mellon explores the economic challenges of modern AI systems. It focuses on valuing training data and establishing clear rules for pricing and compensation in agent-driven AI environments.",
+      "cta": "Swipe for details",
+      "visual_direction": "Minimalistic layout. Black text on white background. Left-aligned. Accent color: blue.",
+      "source_topic_headline": "Anaxi, Carnegie Mellon study AI data value, revenue models"
+    },
+    {
+      "slide_number": 2,
+      "hook": "Rethinking AI agent management for safety.",
+      "body": "A TechRadar report suggests treating AI agents as junior engineers. This approach acknowledges their capabilities while managing their probabilistic nature, ensuring safer and more effective integration into engineering and cybersecurity.",
+      "cta": "Swipe for details",
+      "visual_direction": "Minimalistic layout. Black text on white background. Left-aligned. Accent color: blue.",
+      "source_topic_headline": "Treating AI Agents as Junior Engineers: Oversight for Productivity and Safety"
+    }
+  ]
+}

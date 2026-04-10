@@ -1,0 +1,20 @@
+{
+  "slides": [
+    {
+      "slide_number": 1,
+      "hook": "Understanding AI Data Value",
+      "body": "A Carnegie Mellon study with Anaxi explores the complex value and revenue models of AI training data. As AI systems become more interconnected, defining clear rules for data pricing and compensation is crucial for the evolving internet economy.",
+      "cta": "Swipe for details",
+      "visual_direction": "Minimalistic layout with black text on a white background. Accent color: Blue. Left-aligned text.",
+      "source_topic_headline": "Anaxi, Carnegie Mellon study AI data value, revenue models"
+    },
+    {
+      "slide_number": 2,
+      "hook": "Managing AI Agents Effectively",
+      "body": "Treating AI agents as junior engineers promotes safer and more productive integration. This approach acknowledges their capabilities while accounting for potential inconsistencies, fostering sustainable innovation in engineering and cybersecurity applications.",
+      "cta": "Swipe for details",
+      "visual_direction": "Minimalistic layout with black text on a white background. Accent color: Orange. Left-aligned text.",
+      "source_topic_headline": "Treating AI Agents as Junior Engineers: Oversight for Productivity and Safety"
+    }
+  ]
+}

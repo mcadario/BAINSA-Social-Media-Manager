@@ -1,0 +1,20 @@
+{
+  "slides": [
+    {
+      "slide_number": 1,
+      "hook": "Understanding AI Data Value",
+      "body": "A new study by Anaxi and Carnegie Mellon explores the complex valuation of data in modern AI systems. It examines how reusable AI components will necessitate clearer rules for pricing and compensation in agent-driven environments.",
+      "cta": "Swipe for details",
+      "visual_direction": "Minimal layout, black text on white, blue accent for key terms. Left-aligned.",
+      "source_topic_headline": "Anaxi, Carnegie Mellon study AI data value, revenue models"
+    },
+    {
+      "slide_number": 2,
+      "hook": "Managing AI Agents Effectively",
+      "body": "A TechRadar report suggests treating AI agents as junior engineers. This approach promotes safer and more productive use, acknowledging their capabilities while mitigating risks from inconsistent results due to probabilistic machine learning.",
+      "cta": "Swipe for details",
+      "visual_direction": "Minimal layout, black text on white, orange accent for key terms. Left-aligned.",
+      "source_topic_headline": "Treating AI Agents as Junior Engineers: Oversight for Productivity and Safety"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "slides": [
+    {
+      "slide_number": 1,
+      "hook": "AI's Next Frontier: Autonomous R&D",
+      "body": "Google aims for AI models to act as autonomous R&D labs, capable of experimenting and curating data. Nvidia focuses on reducing communication latency for AI agents to \"think\" without pausing, optimizing inference workloads.",
+      "cta": "Swipe for details",
+      "visual_direction": "Black and white base with blue accent. Minimal, structured, left-aligned text.",
+      "source_topic_headline": "Advancing to the next frontier of AI"
+    },
+    {
+      "slide_number": 2,
+      "hook": "Meta's AI-Native Transformation",
+      "body": "Meta is aggressively shifting to an \"AI-native\" organization, mandating 75% AI coding targets for engineering teams. This involves a significant organizational overhaul, including within Reality Labs, while investing heavily in AI talent and infrastructure.",
+      "cta": "Swipe for details",
+      "visual_direction": "Black and white base with blue accent. Minimal, structured, left-aligned text.",
+      "source_topic_headline": "Meta CEO Accelerates 'AI-Native' Shift, Engineering Teams Set 75% AI Coding Targets Amid Workforce Reductions"
+    }
+  ]
+}
