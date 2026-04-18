@@ -140,3 +140,23 @@ __marimo__/
 # OS files
 .DS_Store
 *.pyc
+
+# ── Conda / Python environments ──────────────────────────────────────────
+.conda/
+conda-env/
+envs/
+# (the actual env lives in your conda installation, not here)
+
+# ── Node / Next.js dashboard ──────────────────────────────────────────────
+node_modules/
+.next/
+dashboard/node_modules/
+dashboard/.next/
+dashboard/.env.local
+dashboard/.env*.local
+dashboard/tsconfig.tsbuildinfo
+
+
+# ── Environment / secrets (never commit these) ───────────────────────────
+.env.local
+*.env.local

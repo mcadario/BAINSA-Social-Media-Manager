@@ -1,0 +1,20 @@
+{
+  "slides": [
+    {
+      "slide_number": 1,
+      "hook": "AI agents are multiplying \u2014 but they can't talk to each other",
+      "body": "AI agents proliferate across sectors, yet lack standardization. They operate in closed environments, making interoperability a growing challenge as deployment expands.",
+      "cta": "Swipe to understand the stakes \u2192",
+      "visual_direction": "Minimal layout, black and white with blue accent. Left-aligned text, clean structure.",
+      "source_topic_headline": "DARPA Wants AI Agents to Talk to Each Other \u2014 and Nobody Has Figured Out How Yet"
+    },
+    {
+      "slide_number": 2,
+      "hook": "One company just bet its entire future on this",
+      "body": "HubSpot is betting its future on AI agents becoming primary CRM users. This move signals a major shift in enterprise software, defining the next generation of business applications.",
+      "cta": "Swipe for the business angle \u2192",
+      "visual_direction": "Minimal layout, black and white with orange accent. Left-aligned text, clean structure.",
+      "source_topic_headline": "HubSpot Goes All-In on AI Agents and Ditches Its Own Conference to Prove It"
+    }
+  ]
+}

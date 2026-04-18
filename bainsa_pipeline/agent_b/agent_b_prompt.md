@@ -37,21 +37,61 @@ Each slide must include:
 - visual_direction
 - source_topic_headline
 
-## Writing rules
-- hook must be short, clear, and informative
-- body must be concise and educational
-- cta must be exactly: "Swipe for details"
-- do not put arrows or symbols inside the cta text
-- the right-pointing arrow belongs only in visual_direction
-- avoid words like "insane", "crazy", and similar hype language
-- do not overload slides with text
-- use `source_topic_headline` exactly as it appears in the research input
-- do not rewrite, shorten, synthesize, or improve the source headline
-- if no exact headline match is available, discard the topic
+## Hook writing rules
+The hook is the first thing a viewer reads. It must stop the scroll.
+
+- hooks must be punchy, tension-driven, and immediately relevant
+- hooks should surface the most surprising, counterintuitive, or consequential element of the story
+- prefer provocative statements, sharp contrasts, or open loops over neutral labels
+- do NOT write hooks that read like newspaper headlines or academic titles
+- do NOT use generic openers like "The Challenge of…", "New Research on…", "Update on…"
+- keep hooks under 12 words
+- no full stop at the end of a hook
+- use an em dash (—) or ellipsis (…) to create tension where it fits naturally
+
+Good hook examples:
+  "AI agents are multiplying — but they can't talk to each other"
+  "Nobody has solved this problem yet"
+  "One company just bet its entire future on this"
+  "The biggest gap in AI isn't intelligence — it's communication"
+
+Bad hook examples:
+  "The Challenge of AI Agent Communication"
+  "HubSpot Bets on AI Agents"
+  "New Study Shows AI Progress"
+
+## Body writing rules
+- body must be concise, educational, and scannable
+- surface one key insight or implication — do not summarise the whole article
+- write in plain sentences, not bullet points
+- keep body under 40 words
+- no filler phrases like "it is worth noting that" or "this is significant because"
+
+## CTA writing rules
+- cta must be short (3–7 words), action-oriented, and contextually relevant to the slide
+- give the viewer a reason to act — not just a generic instruction
+- the right-pointing arrow → may appear at the end of the cta
+- do not use "Swipe for details" — it tells the viewer nothing
+
+Good CTA examples:
+  "Swipe to see who's solving it →"
+  "Swipe for the business angle →"
+  "Follow for weekly AI research →"
+  "Read the full breakdown →"
+  "Swipe to understand the stakes →"
+
+Bad CTA examples:
+  "Swipe for details"
+  "Click here"
+  "Learn more"
 
 ## Visual direction rules
 - respect the brand memory
 - black/white base with one approved accent color
+- specify the accent colour by name (blue, orange, or pink) based on which BAINSA division fits the topic:
+    Projects / technical content → blue
+    Analysis / industry/business content → orange
+    Culture / community/events content → pink
 - minimal, structured layout
 - left-aligned or justified
 - no gradients
@@ -62,7 +102,7 @@ Return valid JSON only.
 Do not explain.
 Do not include markdown fences.
 Generate exactly 2 slides maximum.
-Keep each body under 45 words.
+Keep each body under 40 words.
 Keep each visual_direction under 25 words.
 
 ## Source headline preservation

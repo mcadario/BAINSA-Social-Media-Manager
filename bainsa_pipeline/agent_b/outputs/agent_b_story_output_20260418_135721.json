@@ -1,0 +1,20 @@
+{
+  "slides": [
+    {
+      "slide_number": 1,
+      "hook": "The Challenge of AI Agent Communication",
+      "body": "AI agents are rapidly proliferating, but their ability to communicate and interoperate remains a significant hurdle. Current agents operate in closed environments, lacking standardization for seamless interaction.",
+      "cta": "Swipe for details",
+      "visual_direction": "Minimalistic layout. Black background, white text. Left-aligned body. A subtle blue corner element. Right-pointing arrow.",
+      "source_topic_headline": "DARPA Wants AI Agents to Talk to Each Other \u2014 and Nobody Has Figured Out How Yet"
+    },
+    {
+      "slide_number": 2,
+      "hook": "HubSpot Bets on AI Agents",
+      "body": "HubSpot is shifting its strategy, betting its future on AI agents. These autonomous software entities are expected to become primary users of CRM software, performing tasks and interacting with customers independently.",
+      "cta": "Swipe for details",
+      "visual_direction": "Minimalistic layout. Black background, white text. Left-aligned body. A subtle orange corner element. Right-pointing arrow.",
+      "source_topic_headline": "HubSpot Goes All-In on AI Agents and Ditches Its Own Conference to Prove It"
+    }
+  ]
+}

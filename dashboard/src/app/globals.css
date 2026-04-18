@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── BAINSA Design System ─────────────────────────────────────────────── */
+
+:root {
+  --bainsa-black:  #0a0a0a;
+  --bainsa-white:  #f4f3f3;
+  --bainsa-blue:   #2740eb;
+  --bainsa-orange: #fe6203;
+  --bainsa-pink:   #fe43a7;
+  --bainsa-surface: #111111;
+  --bainsa-border: rgba(244, 243, 243, 0.10);
+  --bainsa-muted:  rgba(244, 243, 243, 0.45);
+}
+
+/* Base reset & dark background */
+html,
+body {
+  background-color: var(--bainsa-black);
+  color: var(--bainsa-white);
+  font-family: 'Space Grotesk', 'Alliance No.1', 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(244, 243, 243, 0.12) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: rgba(244, 243, 243, 0.12);
+  border-radius: 2px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(244, 243, 243, 0.25);
+}
+
+/* Focus ring */
+*:focus-visible {
+  outline: 1px solid var(--bainsa-blue);
+  outline-offset: 2px;
+}
+
+/* Smooth transitions on interactive elements */
+button, a, input, textarea, select {
+  transition-property: color, background-color, border-color, opacity;
+  transition-duration: 150ms;
+  transition-timing-function: ease;
+}
+
+/* Monospace code feel for log output */
+.font-mono {
+  font-family: 'Space Mono', 'JetBrains Mono', ui-monospace, monospace;
+}
+
+/* Scan-line retro-futurism overlay (very subtle) */
+.scanlines::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.03) 2px,
+    rgba(0, 0, 0, 0.03) 4px
+  );
+  pointer-events: none;
+  z-index: 1;
+}
