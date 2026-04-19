@@ -23,7 +23,6 @@ if conda env list | grep -q "^${ENV_NAME} "; then
 else
   echo "📦  Creating conda env '${ENV_NAME}' with Python 3.11…"
   conda create -n "$ENV_NAME" python=3.11 -y
-  conda activate "$ENV_NAME"
   echo "✅  Conda env created."
 fi
 
