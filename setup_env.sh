@@ -23,6 +23,7 @@ if conda env list | grep -q "^${ENV_NAME} "; then
 else
   echo "📦  Creating conda env '${ENV_NAME}' with Python 3.11…"
   conda create -n "$ENV_NAME" python=3.11 -y
+  conda activate "$ENV_NAME"
   echo "✅  Conda env created."
 fi
 
@@ -36,18 +37,7 @@ PIP="$CONDA_BASE/envs/$ENV_NAME/bin/pip"
 PYTHON="$CONDA_BASE/envs/$ENV_NAME/bin/python"
 
 $PIP install --quiet --upgrade pip
-
-$PIP install --quiet \
-  requests \
-  python-dotenv \
-  newspaper3k \
-  lxml_html_clean \
-  numpy \
-  scikit-learn \
-  nltk \
-  huggingface_hub \
-  torch \
-  transformers
+$PIP install -r requirements.txt
 
 echo "✅  Pip packages installed."
 

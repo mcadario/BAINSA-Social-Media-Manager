@@ -12,3 +12,4 @@ nltk
 python-dotenv
 
 huggingface_hub
+  

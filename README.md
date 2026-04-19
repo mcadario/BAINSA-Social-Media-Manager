@@ -54,7 +54,7 @@ Brand Guidelines PDF
 ### 1. Clone the repo and enter the project
 
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/mcadario/BAINSA-Social-Media-Manager.git
 cd BAINSA-Social-Media-Manager
 ```
 
