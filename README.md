@@ -95,6 +95,7 @@ bash setup_env.sh
 Then in your [.env] file insert the API keys.
 
 ### Step 2 - Docker Installation and Setup (only 1st time)
+(Here dnf is used for Fedora-based systems, use your preferred package manager).
 ```bash
 sudo dnf -y install dnf-plugins-core
 sudo dnf-3 config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
@@ -107,13 +108,7 @@ Test it with
 docker run hello-world
 ```
 
-Clone and position yourself in the project folder:
-```bash
-git clone https://github.com/mcadario/BAINSA-Social-Media-Manager.git
-cd /BAINSA-Social-Media-Manager
-```
-
-Then build:
+Position yourslef in the project folder, then build:
 ```bash
 docker compose build
 ```
@@ -129,9 +124,15 @@ NOTE: -d is to detach, so that logs will not displayed. To display logs run:
 docker compose logs -f
 ```
 
-NOTE: [docker compose down] to shut it down.
+NOTE:
+```bash
+docker compose down
+```
+to shut it down.
 
-Now you can connect to the container, throught the link [http://localhost:3000] in your browser, and click Run Agent B. CLICK REFRESH IN THE "STORY PREVIEW" SECTION IF NOTHING APPEARS.
+Now you can connect to the container, throught the link [http://localhost:3000] in your browser, and click Run Agent B. 
+
+CLICK REFRESH IN THE "STORY PREVIEW" SECTION IF NOTHING APPEARS.
 
 
 ---
