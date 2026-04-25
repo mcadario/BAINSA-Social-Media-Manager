@@ -1,0 +1,15 @@
+services:
+  bainsa:
+    build: .
+    container_name: bainsa_app
+    ports:
+      - "127.0.0.1:3000:3000"
+    env_file:
+      - .env
+    environment:
+      PROJECT_ROOT: /app
+      NODE_ENV: development
+    volumes:
+      - ./bainsa_pipeline/agent_b/outputs:/app/bainsa_pipeline/agent_b/outputs
+      - ./bainsa_pipeline/agent_a/output:/app/bainsa_pipeline/agent_a/output
+    restart: unless-stopped

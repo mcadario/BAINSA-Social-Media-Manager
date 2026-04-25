@@ -115,7 +115,7 @@ export default function LogViewer({ onStatusChange, onOutputReady }: LogViewerPr
   const filtered = filter === 'all' ? logs : logs.filter((l) => l.type === filter);
 
   return (
-    <section className="flex flex-col gap-3 h-full min-h-0">
+    <section className="flex flex-col gap-3">
       {/* Header bar */}
       <div className="flex items-center justify-between flex-shrink-0">
         <div className="flex items-center gap-2">
@@ -174,8 +174,8 @@ export default function LogViewer({ onStatusChange, onOutputReady }: LogViewerPr
       <div
         ref={containerRef}
         onScroll={handleScroll}
-        className="flex-1 min-h-0 overflow-y-auto rounded-sm border border-bainsa-border
-                   bg-bainsa-black font-mono text-[11px] leading-relaxed p-3 space-y-0.5"
+        className="h-[400px] overflow-y-auto rounded-sm border border-bainsa-border
+                  bg-bainsa-black font-mono text-[11px] leading-relaxed p-3 space-y-0.5"
         style={{ scrollbarWidth: 'thin', scrollbarColor: 'rgba(244,243,243,0.15) transparent' }}
       >
         {filtered.length === 0 ? (

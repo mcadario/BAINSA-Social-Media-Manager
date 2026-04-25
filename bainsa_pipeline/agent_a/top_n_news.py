@@ -40,4 +40,4 @@ with open(OUTPUT_PATH, "w") as f:
 print("\n########### ARTICLES SAVED IN "+OUTPUT_PATH)
 
 
-print(f"\n\n #### INTEREST ##### \n {interest}")
+#print(f"\n\n #### INTEREST ##### \n {interest}")

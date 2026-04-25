@@ -121,7 +121,7 @@ export default function AgentControlPanel({
                   }
                 `}
               >
-                {confirming ? '⚡ Confirm Run?' : '▶ Run Agent B'}
+                {confirming ? '⚡ Confirm Run?' : '▶ Generate'}
               </button>
               <button
                 onClick={onMockRun}

@@ -58,7 +58,7 @@ git clone https://github.com/mcadario/BAINSA-Social-Media-Manager.git
 cd BAINSA-Social-Media-Manager
 ```
 
-### 2. Create the Python environment
+### 2. Run the setup script
 
 This creates a `bainsa` conda environment and installs all dependencies:
 
@@ -81,17 +81,62 @@ GEMINI_API_KEY=your_gemini_api_key_here
 NEWSDATA_API_KEY=your_newsdata_api_key_here
 ```
 
-### 4. Install dashboard dependencies
+---
 
+## Running using docker (preferred method)
+
+### Step 1 - Project Setup
+
+Position yourself in the project folder and run the setup script:
 ```bash
-cd dashboard
-npm install
-cd ..
+cd /BAINSA-Social-Media-Manager
+bash setup_env.sh
 ```
+Then in your [.env] file insert the API keys.
+
+### Step 2 - Docker Installation and Setup (only 1st time)
+```bash
+sudo dnf -y install dnf-plugins-core
+sudo dnf-3 config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
+sudo dnf -y install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo systemctl enable --now docker
+sudo usermod -aG docker $USER
+```
+Test it with
+```bash
+docker run hello-world
+```
+
+Clone and position yourself in the project folder:
+```bash
+git clone https://github.com/mcadario/BAINSA-Social-Media-Manager.git
+cd /BAINSA-Social-Media-Manager
+```
+
+Then build:
+```bash
+docker compose build
+```
+
+### Step 3 - Connecting to the dashboard (daily use)
+
+And finally run it:
+```bash
+docker compose up -d
+```
+NOTE: -d is to detach, so that logs will not displayed. To display logs run:
+```bash
+docker compose logs -f
+```
+
+NOTE: [docker compose down] to shut it down.
+
+Now you can connect to the container, throught the link [http://localhost:3000] in your browser, and click Run Agent B. CLICK REFRESH IN THE "STORY PREVIEW" SECTION IF NOTHING APPEARS.
+
 
 ---
 
-## Running the pipeline
+## Running the pipeline (manually)
 
 ### Step 1 — Run Agent A (fetch today's news)
 

@@ -12,7 +12,6 @@
 import { NextResponse } from 'next/server';
 import { spawn } from 'child_process';
 import fs from 'fs';
-import path from 'path';
 import {
   addLog,
   cancelMock,
@@ -27,7 +26,7 @@ import {
   setStartTime,
   setStatus,
 } from '@/lib/agentState';
-import { OUTPUTS_DIR, RUNNER_SCRIPT } from '@/lib/paths';
+import { OUTPUTS_DIR, RUNNER_SCRIPT, AGENT_A_SCRIPT } from '@/lib/paths';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -64,6 +63,8 @@ async function runMock() {
 
   const steps: Array<{ ms: number; msg: string; type: 'stdout' | 'system' }> = [
     { ms: 300,  msg: 'BAINSA Agent B pipeline starting… [MOCK MODE]', type: 'system' },
+    { ms: 300, msg: 'Running Agent A…', type: 'stdout' },
+    { ms: 300, msg: 'Loaded latest research input ✓', type: 'stdout' },
     { ms: 400,  msg: 'API key loaded ✓',                               type: 'stdout' },
     { ms: 400,  msg: 'Reading brand memory…',                          type: 'stdout' },
     { ms: 300,  msg: 'Loaded brand_memory_final.md',                   type: 'stdout' },
@@ -162,64 +163,114 @@ export async function POST(request: Request) {
 
   const pythonBin = resolvePython();
   addLog(`Python: ${pythonBin}`, 'system');
+  addLog(`Agent A script: ${AGENT_A_SCRIPT}`, 'system');
+  addLog(`Agent B script: ${RUNNER_SCRIPT}`, 'system');
 
-  // Spawn the Python runner
-  const proc = spawn(pythonBin, [RUNNER_SCRIPT], {
+  addLog('Starting Agent A...', 'system');
+
+  const procA = spawn(pythonBin, [AGENT_A_SCRIPT], {
     env: { ...process.env },
     cwd: process.cwd(),
   });
 
-  setProcess(proc);
+  setProcess(procA);
 
-  // Stream stdout
-  proc.stdout?.on('data', (chunk: Buffer) => {
+  // Stream Agent A stdout
+  procA.stdout?.on('data', (chunk: Buffer) => {
     const text = chunk.toString('utf-8');
     for (const line of text.split('\n')) {
       const trimmed = line.trim();
-      if (!trimmed) continue;
-
-      if (trimmed.startsWith('DASHBOARD_OUTPUT_FILE:')) {
-        const filename = trimmed.replace('DASHBOARD_OUTPUT_FILE:', '').trim();
-        setLastOutputFile(filename);
-        addLog(`Output file ready: ${filename}`, 'system');
-      } else {
-        addLog(trimmed, 'stdout');
-      }
+      if (trimmed) addLog(`[Agent A] ${trimmed}`, 'stdout');
     }
   });
 
-  // Stream stderr
-  proc.stderr?.on('data', (chunk: Buffer) => {
+  // Stream Agent A stderr
+  procA.stderr?.on('data', (chunk: Buffer) => {
     const text = chunk.toString('utf-8');
     for (const line of text.split('\n')) {
       const trimmed = line.trim();
-      if (trimmed) addLog(trimmed, 'stderr');
+      if (trimmed) addLog(`[Agent A] ${trimmed}`, 'stderr');
     }
   });
 
-  // Handle exit
-  proc.on('close', (code) => {
-    setExitCode(code);
-    setEndTime(new Date().toISOString());
-    setProcess(null);
-
-    if (code === 0) {
-      setStatus('success');
-      addLog('Pipeline finished successfully ✓', 'system');
-    } else {
-      setStatus('error');
-      addLog(`Pipeline exited with code ${code}`, 'system');
-    }
-  });
-
-  proc.on('error', (err) => {
+  procA.on('error', (err) => {
     setStatus('error');
     setEndTime(new Date().toISOString());
     setProcess(null);
-    addLog(`Failed to start process: ${err.message}`, 'stderr');
+    addLog(`Failed to start Agent A: ${err.message}`, 'stderr');
   });
 
-  return NextResponse.json({ ok: true, message: 'Agent B started.' });
+  procA.on('close', (codeA) => {
+    setProcess(null);
+
+    if (codeA !== 0) {
+      setExitCode(codeA);
+      setEndTime(new Date().toISOString());
+      setStatus('error');
+      addLog(`Agent A exited with code ${codeA}`, 'system');
+      return;
+    }
+
+    addLog('Agent A finished successfully ✓', 'system');
+    addLog('Starting Agent B...', 'system');
+
+    const procB = spawn(pythonBin, [RUNNER_SCRIPT], {
+      env: { ...process.env },
+      cwd: process.cwd(),
+    });
+
+    setProcess(procB);
+
+    // Stream Agent B stdout
+    procB.stdout?.on('data', (chunk: Buffer) => {
+      const text = chunk.toString('utf-8');
+      for (const line of text.split('\n')) {
+        const trimmed = line.trim();
+        if (!trimmed) continue;
+
+        if (trimmed.startsWith('DASHBOARD_OUTPUT_FILE:')) {
+          const filename = trimmed.replace('DASHBOARD_OUTPUT_FILE:', '').trim();
+          setLastOutputFile(filename);
+          addLog(`Output file ready: ${filename}`, 'system');
+        } else {
+          addLog(`[Agent B] ${trimmed}`, 'stdout');
+        }
+      }
+    });
+
+    // Stream Agent B stderr
+    procB.stderr?.on('data', (chunk: Buffer) => {
+      const text = chunk.toString('utf-8');
+      for (const line of text.split('\n')) {
+        const trimmed = line.trim();
+        if (trimmed) addLog(`[Agent B] ${trimmed}`, 'stderr');
+      }
+    });
+
+    // Handle Agent B exit
+    procB.on('close', (codeB) => {
+      setExitCode(codeB);
+      setEndTime(new Date().toISOString());
+      setProcess(null);
+
+      if (codeB === 0) {
+        setStatus('success');
+        addLog('Pipeline finished successfully ✓', 'system');
+      } else {
+        setStatus('error');
+        addLog(`Agent B exited with code ${codeB}`, 'system');
+      }
+    });
+
+    procB.on('error', (err) => {
+      setStatus('error');
+      setEndTime(new Date().toISOString());
+      setProcess(null);
+      addLog(`Failed to start Agent B: ${err.message}`, 'stderr');
+    });
+  });
+
+  return NextResponse.json({ ok: true, message: 'Agent A + Agent B started.' });
 }
 
 /**

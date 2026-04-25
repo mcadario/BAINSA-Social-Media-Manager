@@ -92,7 +92,7 @@ def get_news_clean(keywords, exclude, limit=5, start_page=None) -> tuple:
                 else:
                     print(f"empty, skipping")
             except Exception as e:
-                print(f"failed: {e}, retrying with same key")
+                print(f"WARN: failed, retrying")
 
         next_page = data.get('nextPage')
         if not next_page:

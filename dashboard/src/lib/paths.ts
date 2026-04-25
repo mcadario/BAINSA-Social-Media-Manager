@@ -69,3 +69,10 @@ export const RESEARCH_INPUT_PATH = path.join(
   'output',
   'top_articles.md',
 );
+
+export const AGENT_A_SCRIPT = path.join(
+  PROJECT_ROOT,
+  'bainsa_pipeline',
+  'agent_a',
+  'top_n_news.py',
+);
