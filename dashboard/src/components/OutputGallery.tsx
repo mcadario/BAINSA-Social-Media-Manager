@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback, useRef } from 'react';
 import type { OutputFile, StoryOutput } from '@/lib/types';
 import InstagramPreview from './InstagramPreview';
 
@@ -18,6 +18,8 @@ export default function OutputGallery({ highlightFile }: OutputGalleryProps) {
   const [activeSlide, setActiveSlide] = useState(0);
   const [editMode, setEditMode] = useState(false);
   const [editedSlides, setEditedSlides] = useState<StoryOutput['slides']>([]);
+  const [downloading, setDownloading] = useState(false);
+  const cardRef = useRef<HTMLDivElement>(null);
 
   const fetchFiles = useCallback(async () => {
     setLoadingFiles(true);
@@ -61,6 +63,40 @@ export default function OutputGallery({ highlightFile }: OutputGalleryProps) {
 
   const slides = editMode ? editedSlides : (output?.slides ?? []);
   const currentSlide = slides[activeSlide];
+
+  // ── Download current slide as PNG ──────────────────────────────────────────
+  async function downloadSlide(slideIndex: number) {
+    if (!cardRef.current) return;
+    setDownloading(true);
+    try {
+      const { toPng } = await import('html-to-image');
+      const dataUrl = await toPng(cardRef.current, {
+        pixelRatio: 4, // ~1120px wide — close to Instagram's 1080px native
+        cacheBust: true,
+      });
+      const link = document.createElement('a');
+      // Build a clean filename: bainsa_slide_1_20260418_135721.png
+      const datePart = selectedFile
+        ?.replace('agent_b_story_output_', '')
+        .replace('.json', '') ?? 'export';
+      link.download = `bainsa_slide_${slideIndex + 1}_${datePart}.png`;
+      link.href = dataUrl;
+      link.click();
+    } catch (err) {
+      console.error('Download failed:', err);
+    } finally {
+      setDownloading(false);
+    }
+  }
+
+  async function downloadAllSlides() {
+    for (let i = 0; i < slides.length; i++) {
+      setActiveSlide(i);
+      // Give React one frame to re-render the card before capturing
+      await new Promise((r) => setTimeout(r, 120));
+      await downloadSlide(i);
+    }
+  }
 
   return (
     <section className="flex flex-col gap-5 h-full min-h-0">
@@ -152,32 +188,60 @@ export default function OutputGallery({ highlightFile }: OutputGalleryProps) {
 
           {!loading && output && currentSlide && (
             <>
-              {/* Slide navigation */}
-              {slides.length > 1 && (
-                <div className="flex items-center gap-2 flex-shrink-0">
-                  {slides.map((_, i) => (
-                    <button
-                      key={i}
-                      onClick={() => setActiveSlide(i)}
-                      className={`
-                        flex-1 rounded-sm border py-1.5 font-mono text-[10px] uppercase
-                        tracking-widest transition-colors
-                        ${activeSlide === i
-                          ? 'border-bainsa-blue bg-bainsa-blue/10 text-bainsa-blue'
-                          : 'border-bainsa-border text-bainsa-muted hover:text-bainsa-white'
-                        }
-                      `}
-                    >
-                      Slide {i + 1}
-                    </button>
-                  ))}
-                </div>
-              )}
+              {/* Slide navigation + download controls */}
+              <div className="flex items-center gap-2 flex-shrink-0">
+                {/* Slide tabs */}
+                {slides.length > 1 && slides.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setActiveSlide(i)}
+                    className={`
+                      flex-1 rounded-sm border py-1.5 font-mono text-[10px] uppercase
+                      tracking-widest transition-colors
+                      ${activeSlide === i
+                        ? 'border-bainsa-blue bg-bainsa-blue/10 text-bainsa-blue'
+                        : 'border-bainsa-border text-bainsa-muted hover:text-bainsa-white'
+                      }
+                    `}
+                  >
+                    Slide {i + 1}
+                  </button>
+                ))}
+
+                {/* Download active slide */}
+                <button
+                  onClick={() => downloadSlide(activeSlide)}
+                  disabled={downloading}
+                  title="Download this slide as PNG"
+                  className="rounded-sm border border-bainsa-border px-2.5 py-1.5 font-mono
+                             text-[10px] uppercase tracking-widest text-bainsa-muted
+                             hover:text-bainsa-white hover:border-bainsa-white/30
+                             transition-colors disabled:opacity-40 whitespace-nowrap"
+                >
+                  {downloading ? '…' : '↓ PNG'}
+                </button>
+
+                {/* Download all slides (only shown when multiple) */}
+                {slides.length > 1 && (
+                  <button
+                    onClick={downloadAllSlides}
+                    disabled={downloading}
+                    title="Download all slides as PNG"
+                    className="rounded-sm border border-bainsa-border px-2.5 py-1.5 font-mono
+                               text-[10px] uppercase tracking-widest text-bainsa-muted
+                               hover:text-bainsa-white hover:border-bainsa-white/30
+                               transition-colors disabled:opacity-40 whitespace-nowrap"
+                  >
+                    {downloading ? '…' : '↓ All'}
+                  </button>
+                )}
+              </div>
 
               <div className="flex flex-col lg:flex-row gap-5 flex-1 min-h-0">
                 {/* Instagram preview */}
                 <div className="flex justify-center lg:justify-start">
                   <InstagramPreview
+                    ref={cardRef}
                     slide={currentSlide}
                     index={activeSlide}
                     total={slides.length}

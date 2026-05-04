@@ -26,6 +26,7 @@ import {
   setStartTime,
   setStatus,
 } from '@/lib/agentState';
+import path from 'path';
 import { OUTPUTS_DIR, RUNNER_SCRIPT, AGENT_A_SCRIPT } from '@/lib/paths';
 
 export const runtime = 'nodejs';
@@ -147,17 +148,30 @@ export async function POST(request: Request) {
   function resolvePython(): string {
     const os = require('os') as typeof import('os');
     const fs = require('fs') as typeof import('fs');
+    const path = require('path') as typeof import('path');
+
+    // 1. If npm run dev was launched inside `conda activate bainsa`, use that env directly.
+    const condaPrefix = process.env.CONDA_PREFIX;
+    if (condaPrefix) {
+      const condaPython = path.join(condaPrefix, 'bin', 'python');
+      if (fs.existsSync(condaPython)) return condaPython;
+    }
+
+    // 2. Try well-known conda install locations, checking for the 'bainsa' env.
     const candidates = [
-      // Miniconda/Anaconda default locations on macOS
       `${os.homedir()}/miniconda3/envs/bainsa/bin/python`,
       `${os.homedir()}/anaconda3/envs/bainsa/bin/python`,
       `${os.homedir()}/opt/miniconda3/envs/bainsa/bin/python`,
       `${os.homedir()}/opt/anaconda3/envs/bainsa/bin/python`,
       '/opt/homebrew/Caskroom/miniconda/base/envs/bainsa/bin/python',
+      // Linux / Docker
+      '/root/miniconda3/envs/bainsa/bin/python',
+      '/root/anaconda3/envs/bainsa/bin/python',
     ];
     for (const p of candidates) {
       if (fs.existsSync(p)) return p;
     }
+
     return 'python3'; // system fallback
   }
 
@@ -168,9 +182,13 @@ export async function POST(request: Request) {
 
   addLog('Starting Agent A...', 'system');
 
+  // Agent A uses relative imports (imports/pipeline, imports/news) so it must
+  // be run from its own directory, not from the dashboard's cwd.
+  const agentADir = path.dirname(AGENT_A_SCRIPT);
+
   const procA = spawn(pythonBin, [AGENT_A_SCRIPT], {
     env: { ...process.env },
-    cwd: process.cwd(),
+    cwd: agentADir,
   });
 
   setProcess(procA);
