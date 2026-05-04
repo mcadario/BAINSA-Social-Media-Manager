@@ -72,13 +72,29 @@ Bad hook examples:
 - give the viewer a reason to act — not just a generic instruction
 - the right-pointing arrow → may appear at the end of the cta
 - do not use "Swipe for details" — it tells the viewer nothing
+- IMPORTANT: if you are generating only 1 slide, do NOT use any CTA that references swiping — there is nothing to swipe to. Use a non-swipe CTA instead (e.g. "Follow for weekly AI research →", "Read the full story →")
+- if you are generating 2 slides, swipe CTAs are appropriate on slide 1 only — slide 2 should use a non-swipe CTA
 
-Good CTA examples:
+Good CTA examples for a single slide:
+  "Follow for weekly AI research →"
+  "More tomorrow →"
+  "Stay tuned →"
+
+Bad CTA examples for a single slide (imply more content that doesn't exist):
+  "Read the full story →"
+  "Read the full breakdown →"
+  "See the breakdown →"
+  "More on this →"
+
+Good CTA examples for slide 1 of 2:
   "Swipe to see who's solving it →"
   "Swipe for the business angle →"
-  "Follow for weekly AI research →"
-  "Read the full breakdown →"
   "Swipe to understand the stakes →"
+
+Good CTA examples for slide 2 of 2:
+  "Follow for weekly AI research →"
+  "Read the full story →"
+  "More tomorrow →"
 
 Bad CTA examples:
   "Swipe for details"

@@ -63,7 +63,7 @@ def validate_top_level(data: dict) -> list[str]:
     return errors
 
 
-def validate_slide(slide: dict, index: int) -> list[str]:
+def validate_slide(slide: dict, index: int, total_slides: int) -> list[str]:
     errors = []
 
     required_fields = [
@@ -81,8 +81,19 @@ def validate_slide(slide: dict, index: int) -> list[str]:
         elif isinstance(slide[field], str) and not slide[field].strip():
             errors.append(f"Slide {index}: field '{field}' is empty")
 
-    if "cta" in slide and slide.get("cta") != "Swipe for details":
-        errors.append(f"Slide {index}: cta must be exactly 'Swipe for details'")
+    if "cta" in slide:
+        cta = slide["cta"].strip()
+        cta_words = len(cta.split())
+        if not cta:
+            errors.append(f"Slide {index}: cta is empty")
+        elif cta_words > 8:
+            errors.append(f"Slide {index}: cta is too long ({cta_words} words, max 8)")
+        # Swipe CTAs make no sense when there is only one slide, or on the last slide
+        swipe_cta = any(w in cta.lower() for w in ("swipe",))
+        if swipe_cta and (total_slides == 1 or index == total_slides):
+            errors.append(
+                f"Slide {index}: cta uses 'swipe' but there is no next slide — use a non-swipe CTA"
+            )
 
     return errors
 
@@ -129,11 +140,13 @@ def main() -> None:
     errors = []
     errors.extend(validate_top_level(data))
 
-    for i, slide in enumerate(data.get("slides", []), start=1):
+    all_slides = data.get("slides", [])
+    total_slides = len(all_slides)
+    for i, slide in enumerate(all_slides, start=1):
         if not isinstance(slide, dict):
             errors.append(f"Slide {i}: must be an object")
             continue
-        errors.extend(validate_slide(slide, i))
+        errors.extend(validate_slide(slide, i, total_slides))
 
     errors.extend(validate_banned_words(data))
     errors.extend(validate_source_headlines(data))
