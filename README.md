@@ -124,15 +124,15 @@ NOTE: -d is to detach, so that logs will not displayed. To display logs run:
 docker compose logs -f
 ```
 
+Now you can connect to the container, throught the link [http://localhost:3000] in your browser, and click Run Agent B. 
+
+CLICK REFRESH IN THE "STORY PREVIEW" SECTION IF NOTHING APPEARS.
+
 NOTE:
 ```bash
 docker compose down
 ```
 to shut it down.
-
-Now you can connect to the container, throught the link [http://localhost:3000] in your browser, and click Run Agent B. 
-
-CLICK REFRESH IN THE "STORY PREVIEW" SECTION IF NOTHING APPEARS.
 
 
 ---
@@ -192,7 +192,7 @@ This runs interactively in the terminal. Outputs are saved to `bainsa_pipeline/a
 
 | Button | What it does |
 |---|---|
-| **Run Agent** | Starts the real pipeline — requires API keys in `.env` |
+| **Generate** | Starts the real pipeline — requires API keys in `.env` |
 | **Mock Run** | Replays logs and loads the latest existing output — no API key needed |
 | **Stop** | Cancels the current run immediately |
 
@@ -214,54 +214,56 @@ The log panel streams live output from the Python process so you can see exactly
 ## Project structure
 
 ```
-BAINSA-Social-Media-Manager/
-├── .env                              # API keys (never committed)
-├── .env.example                      # Template showing required keys
-├── setup_env.sh                      # One-shot environment setup script
-├── environment.yml                   # Conda env spec (Python 3.11 + pip)
-│
-├── bainsa_pipeline/
-│   ├── step1/                        # Brand memory (one-time extraction)
-│   │   ├── brand_memory_final.md     # Structured brand rules used by Agent B
-│   │   └── brand_memory_schema.md    # Schema definition for the brand memory
-│   │
-│   ├── agent_a/                      # News research agent
-│   │   ├── top_n_news.py             # Main script — fetches and ranks news
-│   │   ├── imports/                  # Pipeline modules (news fetch, classifier)
-│   │   ├── datasets/                 # Trained classifier data
-│   │   └── output/
-│   │       └── top_articles.md       # Research handoff for Agent B
-│   │
-│   ├── agent_b/                      # Story generation agent
-│   │   ├── agent_b_runner.py         # Interactive CLI runner
-│   │   ├── agent_b_prompt.md         # System prompt sent to Gemini
-│   │   ├── agent_b_validator.py      # Brand compliance validator
-│   │   └── outputs/                  # Timestamped JSON story drafts
-│   │       └── agent_b_story_output_YYYYMMDD_HHMMSS.json
-│   │
-│   └── gateway/
-│       └── run_agent_b.py            # Non-interactive runner used by the dashboard
-│
-└── dashboard/                        # Next.js web dashboard
-    ├── src/
-    │   ├── app/
-    │   │   ├── page.tsx              # Main dashboard page
-    │   │   └── api/
-    │   │       ├── run-agent/        # POST to start, DELETE to stop
-    │   │       ├── logs/             # SSE stream for real-time log output
-    │   │       ├── outputs/          # List all output files
-    │   │       └── output/[filename] # Fetch a specific output file
-    │   ├── components/
-    │   │   ├── AgentControlPanel.tsx # Run/Stop buttons + log viewer
-    │   │   ├── LogViewer.tsx         # Real-time SSE log display
-    │   │   ├── OutputGallery.tsx     # File list + preview + editor
-    │   │   └── InstagramPreview.tsx  # 9:16 story card renderer
-    │   └── lib/
-    │       ├── agentState.ts         # Shared server state (process, logs, status)
-    │       ├── paths.ts              # Resolved file paths
-    │       ├── types.ts              # Shared TypeScript types
-    │       └── parseVisualDirection.ts  # Extracts accent colour from visual_direction
-    └── .env.local.example            # Dashboard env template (optional overrides)
+├── bainsa_pipeline
+│   ├── agent_a
+│   │   ├── articles_chkpt.json
+│   │   ├── datasets
+│   │   ├── imports
+│   │   ├── output
+│   │   ├── setup.sh
+│   │   ├── top_n_news.py
+│   │   └── train_regressor.ipynb
+│   ├── agent_b
+│   │   ├── agent_b_prompt.md
+│   │   ├── agent_b_runner.py
+│   │   ├── agent_b_validator.py
+│   │   └── outputs
+│   ├── gateway
+│   │   └── run_agent_b.py
+│   └── step1
+│       ├── brand_memory_final.md
+│       ├── brand_memory_schema.md
+│       ├── extraction_plan.md
+│       ├── openclaw_step1_prompt.md
+│       ├── (Step1)brand_format.md
+│       ├── test_extraction_notes.md
+│       └── visual_extraction_notes.md
+├── dashboard
+│   ├── next.config.mjs
+│   ├── package.json
+│   ├── package-lock.json
+│   ├── postcss.config.mjs
+│   ├── public
+│   │   └── fonts
+│   ├── src
+│   │   ├── app
+│   │   ├── components
+│   │   └── lib
+│   ├── tailwind.config.ts
+│   └── tsconfig.json
+├── docker-compose.yml
+├── Dockerfile
+├── environment.yml
+├── LICENSE
+├── README.md
+├── requirements.txt
+├── setup_env.sh
+├── slide-examples
+│   ├── bainsa_slide_1_20260505_065909.png
+│   ├── bainsa_slide_1_20260505_071000.png
+│   ├── bainsa_slide_2_20260505_065909.png
+│   └── bainsa_slide_2_20260505_071000.png
+└── (Step1)brand_format.md
 ```
 
 ---
@@ -295,8 +297,7 @@ Files are saved to `bainsa_pipeline/agent_b/outputs/` and named `agent_b_story_o
 
 | Constant | Default | Description |
 |---|---|---|
-| `TOP_N` | `5` | Number of top articles to include in the research handoff |
-| `LIMIT` | `50` | Number of articles to fetch from the Newsdata API |
+| `LIMIT` | `50` | Maximum number of articles to fetch from the Newsdata API |
 | `KEYWORDS` | `"ai, artificial intelligence, ..."` | Search terms |
 | `EXCLUDE_CAT` | `"business"` | News categories to exclude |
 
@@ -321,7 +322,27 @@ If you need to rotate a key, update `.env` and restart any running dashboard or 
 
 ## Daily workflow
 
-Once set up, the typical flow is:
+#### Docker Usage (preferred)
+
+```bash
+docker compose up -d
+```
+NOTE: -d is to detach, so that logs will not displayed. To display logs run:
+```bash
+docker compose logs -f
+```
+
+Now you can connect to the container, throught the link [http://localhost:3000] in your browser, and click Run Agent B. 
+
+CLICK REFRESH IN THE "STORY PREVIEW" SECTION IF NOTHING APPEARS.
+
+NOTE:
+```bash
+docker compose down
+```
+to shut it down.
+
+#### Manual Pipeline
 
 ```bash
 # 1. Activate the environment
