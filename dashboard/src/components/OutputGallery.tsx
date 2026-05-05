@@ -69,13 +69,43 @@ export default function OutputGallery({ highlightFile }: OutputGalleryProps) {
     if (!cardRef.current) return;
     setDownloading(true);
     try {
+      await document.fonts.ready;
+
+      // Fetch font files and convert to base64
+      const [alliance1, alliance2] = await Promise.all([
+        fetch('/fonts/AllianceNo1-Regular.otf').then(r => r.arrayBuffer()),
+        fetch('/fonts/AllianceNo2-SemiBold.otf').then(r => r.arrayBuffer()),
+      ]);
+
+      //manually encode do base64 since html-to-image font scanner was leading to bugs
+
+      const toBase64 = (buffer: ArrayBuffer) =>
+        btoa(String.fromCharCode(...new Uint8Array(buffer)));
+
+      const fontEmbedCSS = `
+        @font-face {
+          font-family: 'Alliance No.1';
+          src: url('data:font/otf;base64,${toBase64(alliance1)}') format('opentype');
+          font-weight: 400;
+          font-style: normal;
+        }
+        @font-face {
+          font-family: 'Alliance No.2';
+          src: url('data:font/otf;base64,${toBase64(alliance2)}') format('opentype');
+          font-weight: 600;
+          font-style: normal;
+        }
+      `;
+
       const { toPng } = await import('html-to-image');
       const dataUrl = await toPng(cardRef.current, {
-        pixelRatio: 4, // ~1120px wide — close to Instagram's 1080px native
+        pixelRatio: 4,
         cacheBust: true,
+        skipFonts: true,  // bypass buggy scanner
+        fontEmbedCSS,     // but inject our own base64 fonts
       });
+
       const link = document.createElement('a');
-      // Build a clean filename: bainsa_slide_1_20260418_135721.png
       const datePart = selectedFile
         ?.replace('agent_b_story_output_', '')
         .replace('.json', '') ?? 'export';
